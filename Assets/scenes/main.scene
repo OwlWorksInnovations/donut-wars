@@ -513,7 +513,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spawn Point",
-      "Position": "-26.93935,-320,23.41626",
+      "Position": "-26.93935,-544,23.41626",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "",
@@ -545,7 +545,7 @@
       "__version": 2,
       "Flags": 0,
       "Name": "Spawn Point (1)",
-      "Position": "-1.604797,607.0701,0.003356934",
+      "Position": "-1.604797,544,0.003356934",
       "Rotation": "0,0,0,1",
       "Scale": "1,1,1",
       "Tags": "",
@@ -594,7 +594,7 @@
     "GameObjectSystems": {
       "Sandbox.Clutter.ClutterGridSystem": {
         "Storage": {
-          "$blob": "67f5221e-c211-446c-ac1c-601a99a56f5f"
+          "$blob": "ee59fe6f-3da8-4848-b95e-51cc2a6177e8"
         }
       },
       "Sandbox.MovieMaker.MovieRecorderSystem": {
