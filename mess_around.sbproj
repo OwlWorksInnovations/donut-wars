@@ -1,7 +1,7 @@
 {
   "Title": "mess around",
   "Type": "game",
-  "Org": "local",
+  "Org": "owlworks",
   "Ident": "mess_around",
   "Schema": 1,
   "IncludeSourceFiles": false,
