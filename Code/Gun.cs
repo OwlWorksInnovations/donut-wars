@@ -43,6 +43,8 @@ public sealed class Gun : Component
 		var camera = Scene.Camera;
 		var spawnPos = camera.WorldPosition + camera.WorldRotation.Forward * 50f;
 		var bullet = BulletPrefab.Clone( spawnPos );
+		var bulletComponent = bullet.GetComponent<Bullet>();
+		bulletComponent.Shooter = GameObject;
 		bullet.NetworkSpawn();
 		var rb = bullet.Components.Get<Rigidbody>();
 		rb.Velocity = camera.WorldRotation.Forward * 2000f;

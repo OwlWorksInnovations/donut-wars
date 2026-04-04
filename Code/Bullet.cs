@@ -2,8 +2,8 @@ using Sandbox;
 
 public sealed class Bullet : Component, Component.ITriggerListener
 {
+	public GameObject Shooter { get; set; }
 	public float Damage { get; set; } = 25f;
-
 	private TimeSince _timer;
 
 	protected override void OnStart()
@@ -13,27 +13,28 @@ public sealed class Bullet : Component, Component.ITriggerListener
 
 	protected override void OnUpdate()
 	{
-		if ( _timer > 30f )
+		if (_timer > 30f)
 		{
-			Log.Info( "30 seconds passed!" );
 			GameObject.Destroy();
 		}
 	}
 
-	public void OnTriggerEnter( Collider other )
+	public void OnTriggerEnter(Collider other)
 	{
-		if ( !other.GameObject.Name.Contains( "Player" ) ) return;
+		if ( other.GameObject == Shooter ) return;
 
-		var allHealth = Scene.GetAll<Health>();
-		foreach ( var h in allHealth )
-		{
-			if ( h.GameObject.Parent == other.GameObject )
+		if (other.GameObject.Tags.Has("player")) {
+
+			Log.Info(other.GameObject.Name);
+			var healths = other.GameObject.GetComponentsInChildren<Health>();
+
+			foreach ( var health in healths )
 			{
-				h.health -= 25f;
-				Log.Info( $"Hit! Health is now {h.health}" );
-				GameObject.Destroy();
-				return;
+				Log.Info( "Found health" );
+				health.health -= Damage;
 			}
+
+			GameObject.Destroy();
 		}
 	}
 }
