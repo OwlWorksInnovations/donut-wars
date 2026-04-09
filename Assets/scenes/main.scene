@@ -8801,9 +8801,9 @@
             "Maxs": "1744,624,592.0841"
           },
           "Contrast": 1,
-          "DistanceTexture": "scenes/main_scene_data/ddgi/indirect light volume_distance_d22a135a-3ba3-490a-9174-5e2f117621e2.vtex",
+          "DistanceTexture": null,
           "InsideGeometry": "Relocate",
-          "IrradianceTexture": "scenes/main_scene_data/ddgi/indirect light volume_irradiance_d22a135a-3ba3-490a-9174-5e2f117621e2.vtex",
+          "IrradianceTexture": null,
           "NormalBias": 5,
           "OnComponentDestroy": null,
           "OnComponentDisabled": null,
@@ -8812,7 +8812,7 @@
           "OnComponentStart": null,
           "OnComponentUpdate": null,
           "ProbeDensity": 15,
-          "RelocationTexture": "scenes/main_scene_data/ddgi/indirect light volume_relocation_d22a135a-3ba3-490a-9174-5e2f117621e2.vtex"
+          "RelocationTexture": null
         }
       ],
       "Children": []
@@ -9317,13 +9317,13 @@
       "CustomBounds": false
     },
     "GameObjectSystems": {
-      "Sandbox.MovieMaker.MovieRecorderSystem": {
-        "DisableClientRecording": false
-      },
       "Sandbox.Clutter.ClutterGridSystem": {
         "Storage": {
-          "$blob": "05794b71-9eb3-4545-a850-877d092e20f8"
+          "$blob": "372f0735-617f-4731-9255-2575ae825267"
         }
+      },
+      "Sandbox.MovieMaker.MovieRecorderSystem": {
+        "DisableClientRecording": false
       }
     }
   },
