@@ -21,16 +21,16 @@ public sealed class Bullet : Component, Component.ITriggerListener
 
 	public void OnTriggerEnter(Collider other)
 	{
-		if ( other.GameObject == Shooter ) return;
+		if (other.GameObject == Shooter) return;
 
 		if (other.GameObject.Tags.Has("player")) {
 
 			Log.Info(other.GameObject.Name);
 			var healths = other.GameObject.GetComponentsInChildren<Health>();
 
-			foreach ( var health in healths )
+			foreach (var health in healths)
 			{
-				Log.Info( "Found health" );
+				Log.Info("Found health");
 				health.health -= Damage;
 			}
 

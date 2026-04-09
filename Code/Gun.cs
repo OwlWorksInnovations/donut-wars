@@ -2,39 +2,44 @@ using Sandbox;
 
 public sealed class Gun : Component
 {
-	[Property] public float Damage { get; set; } = 25f;
+	[Property] public int AmmoCapacity { get; set; } = 10;
 	[Property] public float FireRate { get; set; } = 0.1f;
 	[Property] public GameObject MuzzlePoint { get; set; }
 	[Property] public GameObject BulletPrefab { get; set; }
 
-	public int Ammo { get; set; } = 10;
 	public bool IsReloading { get; private set; } = false;
+	public int Ammo { get; set; }
 
 	private TimeSince _timeSinceLastShot;
 	private TimeUntil _reloadTimer;
 
+	protected override void OnStart()
+	{
+		Ammo = AmmoCapacity;
+	}
+
 	protected override void OnUpdate()
 	{
-		if ( IsProxy ) return;
-		if ( IsReloading && _reloadTimer )
+		if (IsProxy) return;
+		if (IsReloading && _reloadTimer)
 		{
-			Ammo = 10;
+			Ammo = AmmoCapacity;
 			IsReloading = false;
-			Log.Info( "Reload done!" );
+			Log.Info("Reload done!");
 		}
 
-		if ( Input.Pressed( "attack1" ) && _timeSinceLastShot > FireRate && Ammo > 0 && !IsReloading )
+		if (Input.Pressed("attack1") && _timeSinceLastShot > FireRate && Ammo > 0 && !IsReloading)
 		{
 			Shoot();
 			_timeSinceLastShot = 0;
 			Ammo--;
 		}
 
-		if ( Input.Pressed( "reload" ) && !IsReloading )
+		if (Input.Pressed("reload") && !IsReloading)
 		{
 			IsReloading = true;
 			_reloadTimer = 3f;
-			Log.Info( "Reloading..." );
+			Log.Info("Reloading...");
 		}
 	}
 
@@ -44,6 +49,7 @@ public sealed class Gun : Component
 		var spawnPos = camera.WorldPosition + camera.WorldRotation.Forward * 50f;
 		var bullet = BulletPrefab.Clone( spawnPos );
 		var bulletComponent = bullet.GetComponent<Bullet>();
+
 		bulletComponent.Shooter = GameObject;
 		bullet.NetworkSpawn();
 		var rb = bullet.Components.Get<Rigidbody>();
